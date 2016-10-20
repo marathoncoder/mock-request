@@ -1,0 +1,7 @@
+<header class="navbar-static-top bs-docs-nav" id="top" role="banner">
+    <div class="full-container">
+        <span class="navbar-header">
+            Mock-request <span>前后端分离模拟数据请求神器!</span>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,16 @@
+.navbar-header{background:#464646; width: 100%; height: 50px; color: #fff; font-size: 24px; line-height: 50px; padding: 0 20px; box-shadow: 0 2px 2px rgba(0,0,0,0.05);}
+.navbar-header span{font-size: 14px; color: #f47023;}
+.api-detail{background:#0f0;}
+.api-list{background:#f8f8f8; overflow-y:scroll; border-right:1px #e5e5e5 solid; flex: 1;}
+.api-list h2{margin: 0; font-size: 16px; line-height: 40px; padding: 0 10px; color: #464646; border-bottom: 2px #f47023 solid; background: #f3f3f3;}
+.btn-area{ padding: 10px;}
+.url-input, .save-group{width: 100%;}
+.save-btn{width: 20px!important;}
+#editor {height: 580px;}
+
+.history-list{list-style: none; padding: 0;}
+.history-list li{color: #818181; border-bottom: 1px #dbdbdb solid; padding: 10px 30px 10px 10px; font-size: 11px; display: block; word-wrap: break-word;
+    word-break: normal; position: relative;}
+.history-list li.hover{background: #eaeaea;}
+.history-list h3{ font-size: 14px; color: #7ed321; margin: 0; padding: 0; margin-bottom: 10px;}
+.remove-it{position: absolute; right:10px; top:50%; display: none; cursor: pointer;}
