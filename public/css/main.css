@@ -12,5 +12,6 @@
 .history-list li{color: #818181; border-bottom: 1px #dbdbdb solid; padding: 10px 30px 10px 10px; font-size: 11px; display: block; word-wrap: break-word;
     word-break: normal; position: relative;}
 .history-list li.hover{background: #eaeaea;}
+.history-list a{color: #818181; text-decoration: none;}
 .history-list h3{ font-size: 14px; color: #7ed321; margin: 0; padding: 0; margin-bottom: 10px;}
 .remove-it{position: absolute; right:10px; top:50%; display: none; cursor: pointer;}

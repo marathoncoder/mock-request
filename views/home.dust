@@ -7,10 +7,10 @@
             <h2>历史记录</h2>
             <ul class="history-list">
                 {#list}
-                <li>
+                <li data-id="{_id}">
                     <h3>{name}</h3>
                     <span class="glyphicon glyphicon-remove remove-it" data-id="{_id}"></span>
-                    {url}
+                    <a href="/view/{_id}">{url}</a>
                 </li>
                 {/list}
             </ul>
@@ -19,7 +19,7 @@
             <div class="btn-area">
                 <div class="panel panel-default">
                     {#first}
-                    <div class="panel-heading" data-id="{_id}">
+                    <div class="panel-heading" data-id="{_id}" id="mock-detail">
                         <div class="form-inline clearfix">
                             <div class="col-lg-10">
                                 <input type="text" class="form-control" placeholder="api名称" required name="name" value="{name}">
@@ -69,13 +69,15 @@ $(function(){
         var name = $('[name="name"]').val();
         var url = $('[name="url"]').val();
         var data = editor.getValue();
+        var id = $('#mock-detail').attr('data-id');
 
         $.ajax({
             url: '/saveMock',
             data:{
                 name: name,
                 url: url,
-                data: data
+                data: data,
+                id: id
             },
             type:'POST',
             dataType: 'jsonp',

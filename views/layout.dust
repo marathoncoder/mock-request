@@ -13,9 +13,10 @@
 
      <link rel="stylesheet" href="/css/lib/bootstrap.min.css">
      <link rel="stylesheet" href="/css/main.css" />
-     <script src="js/ace.js" type="text/javascript" charset="utf-8"></script>
-     <script src="js/theme-idle_fingers.js" type="text/javascript" charset="utf-8"></script>
-     <script src="js/mode-json.js" type="text/javascript" charset="utf-8"></script>
+     <script src="/js/ace.js" type="text/javascript" charset="utf-8"></script>
+     <script src="/js/theme-idle_fingers.js" type="text/javascript" charset="utf-8"></script>
+     <script src="/js/mode-json.js" type="text/javascript" charset="utf-8"></script>
+     <script src="/js/worker-json.js" type="text/javascript" charset="utf-8"></script>
      {+stylesheet}{/stylesheet}
 </head>
 

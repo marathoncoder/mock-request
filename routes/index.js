@@ -4,30 +4,6 @@ var co = require('co');
 var MockModel = require('../models').MockModel;
 var ObjectId = require('mongodb').ObjectID;
 
-//const Mocklist = MockModel.find().sort({date: -1}).exec();
-//console.log(Mocklist);
-
-const routesConf = [
-    //{
-    //    url:'/',
-    //    data:{
-    //        test:'test11111'
-    //    }
-    //
-    //},
-    {
-        url: '/getList',
-        data:[
-            {
-                adasd:'asdasd'
-            },
-            {
-                asdasd:'asdasd'
-            }
-        ]
-    }
-];
-
 module.exports = function(app){
     app.get('/',function(req,res){
         co(function *(){
@@ -37,7 +13,36 @@ module.exports = function(app){
                 list: list,
                 first: first
             });
-        })
+        });
+    });
+
+    app.get('/view/:id',function(req,res){
+        var id = req.params.id;
+        co(function *(){
+            var list = yield MockModel.find().sort({date: -1}).exec();
+            var first = yield MockModel.findOne({
+                _id: new ObjectId(id)
+            }).sort({date: -1}).exec();
+            return yield res.render('home',{
+                list: list,
+                first: first
+            });
+        });
+    });
+
+    app.get('/*',function(req,res){
+        console.log(req.originalUrl);
+        var originalUrl = 'http://'+req.hostname+':3000'+req.originalUrl;
+        co(function *(){
+            var item = yield MockModel.findOne({
+                "url": originalUrl
+            }).exec();
+            if(item == null){
+                yield res.send('接口未定义')
+            }else{
+                yield res.send(item.data);
+            }
+        });
     });
 
     app.post('/saveMock',function(req,res){
@@ -55,7 +60,7 @@ module.exports = function(app){
                 });
             }else{
                 var mock = yield MockModel.findOne({
-                    name: body.name
+                    url: body.url
                 }).exec();
                 if(mock == null){
                     yield MockModel.create(body);
@@ -64,9 +69,14 @@ module.exports = function(app){
                         msg:'success'
                     });
                 }else{
+                    yield MockModel.update({_id: new ObjectId(body.id)},{$set:{
+                        name: body.name,
+                        url: body.url,
+                        data: body.data
+                    }});
                     yield res.jsonp({
-                        code:1000,
-                        msg:'己有相同的名称api存在'
+                        code:0,
+                        msg:'success'
                     });
                 }
             }
@@ -81,17 +91,8 @@ module.exports = function(app){
             yield res.jsonp({
                 code:0
             })
-        })
+        });
     });
 
-    co(function *(){
-    const list = yield MockModel.find().sort({date: -1}).exec();
-        for(var i = 0; i < list.length; i++){
-            (function(i){
-                app.all(list[i].url,function(req,res){
-                    res.jsonp(list[i].data);
-                });
-            })(i);
-        }
-    });
+
 };
