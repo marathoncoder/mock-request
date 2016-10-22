@@ -35,6 +35,23 @@
                         </div>
                     </div>
                     <div class="panel-body" id="editor">{data}</div>
+                    {:else}
+                    <div class="panel-heading" id="mock-detail">
+                        <div class="form-inline clearfix">
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" placeholder="api名称" required name="name">
+                            </div>
+                            <div class="col-lg-50">
+                                <div class="input-group save-group">
+                                    <input type="text" class="form-control" placeholder="请求地址" required name="url">
+                                    <span class="input-group-btn save-btn">
+                                        <button type="button" class="btn btn-primary" id="save">Save</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body" id="editor">{}</div>
                     {/first}
                 </div>
             </div>
